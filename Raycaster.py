@@ -155,6 +155,8 @@ def main_menu():
 
         screen.blit(bg, (0,0))
 
+        # print(btn_ctr)
+
         draw_text('My Raycaster', font, (255, 255, 255), screen, 450, 20)
  
         mx, my = pygame.mouse.get_pos()
@@ -162,12 +164,12 @@ def main_menu():
         button_1 = pygame.Rect(425, 100, 200, 50)
         button_2 = pygame.Rect(425, 200, 200, 50)
 
-        if 425 + 200 > mx > 425 and 100 + 50> my > 100:
+        if 425 + 200 > mx > 425 and 100 + 50> my > 100 or btn_ctr == 0:
             pygame.draw.rect(screen, (200, 0, 0), button_1)
         else:
             pygame.draw.rect(screen, (255, 0, 0), button_1)
 
-        if 425 + 200 > mx > 425 and 200 + 50 > my > 200:
+        if 425 + 200 > mx > 425 and 200 + 50 > my > 200 or btn_ctr == 1:
             pygame.draw.rect(screen, (200, 0, 0), button_2)
         else:
             pygame.draw.rect(screen, (255, 0, 0), button_2)
@@ -191,6 +193,24 @@ def main_menu():
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+                if event.key == pygame.K_s:
+                    btn_ctr += 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_d:
+                    btn_ctr += 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_a:
+                    btn_ctr -= 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_w:
+                    btn_ctr -= 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_RETURN:
+                    if btn_ctr == 0:
+                        game()
+                    if btn_ctr == 1:
+                        pygame.quit()
+                        sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
@@ -203,6 +223,7 @@ def pause():
 
     click = False
     paused = True
+    btn_ctr = 0
     bg = pygame.image.load("hitler.jpg")
     
     while paused:
@@ -218,12 +239,12 @@ def pause():
         button_1 = pygame.Rect(425, 100, 200, 50)
         button_2 = pygame.Rect(425, 200, 200, 50)
 
-        if 425 + 200 > mx > 425 and 100 + 50> my > 100:
+        if 425 + 200 > mx > 425 and 100 + 50> my > 100 or btn_ctr == 0:
             pygame.draw.rect(screen, (200, 0, 0), button_1)
         else:
             pygame.draw.rect(screen, (255, 0, 0), button_1)
 
-        if 425 + 200 > mx > 425 and 200 + 50 > my > 200:
+        if 425 + 200 > mx > 425 and 200 + 50 > my > 200 or btn_ctr == 1:
             pygame.draw.rect(screen, (200, 0, 0), button_2)
         else:
             pygame.draw.rect(screen, (255, 0, 0), button_2)
@@ -247,6 +268,24 @@ def pause():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     paused = False
+                if event.key == pygame.K_s:
+                    btn_ctr += 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_d:
+                    btn_ctr += 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_a:
+                    btn_ctr -= 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_w:
+                    btn_ctr -= 1
+                    btn_ctr = btn_ctr % 2
+                if event.key == pygame.K_RETURN:
+                    if btn_ctr == 0:
+                        game()
+                    if btn_ctr == 1:
+                        pygame.quit()
+                        sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
