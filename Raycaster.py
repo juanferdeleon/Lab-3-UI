@@ -146,10 +146,15 @@ def main_menu():
     '''Main Menu'''
 
     click = False
+    btn_ctr = 0
+    bg = pygame.image.load("hitler.jpg")
     
     while True:
          
         screen.fill((0,0,0))
+
+        screen.blit(bg, (0,0))
+
         draw_text('My Raycaster', font, (255, 255, 255), screen, 450, 20)
  
         mx, my = pygame.mouse.get_pos()
@@ -198,10 +203,14 @@ def pause():
 
     click = False
     paused = True
+    bg = pygame.image.load("hitler.jpg")
     
     while paused:
          
         screen.fill((0,0,0))
+
+        screen.blit(bg, (0,0))
+
         draw_text('My Raycaster (Paused)', font, (255, 255, 255), screen, 400, 20)
          
         mx, my = pygame.mouse.get_pos()
